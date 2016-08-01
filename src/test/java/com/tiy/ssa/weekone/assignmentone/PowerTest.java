@@ -12,7 +12,7 @@ public class PowerTest
 	{
 		assertEquals(1, new Power(1).powerOfOne());
 		assertEquals(3, new Power(3).powerOfOne());
-		assertEquals(5, new Power(5).powerOfOne());
+		assertEquals(-5, new Power(-5).powerOfOne());
 	}
 
 	@Test
@@ -20,7 +20,7 @@ public class PowerTest
 	{
 		assertEquals(16, new Power(4).squared());
 		assertEquals(25, new Power(5).squared());
-		assertEquals(4, new Power(2).squared());
+		assertEquals(9, new Power(-3).squared());
 	}
 
 	@Test
@@ -28,7 +28,7 @@ public class PowerTest
 	{
 		assertEquals(8, new Power(2).cubed());
 		assertEquals(125, new Power(5).cubed());
-		assertEquals(27, new Power(3).cubed());
+		assertEquals(-27, new Power(-3).cubed());
 	}
 
 }
