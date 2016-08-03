@@ -1,13 +1,18 @@
-package com.tiy.ssa.weektwo.assignmenttwo;
+package com.tiy.ssa.weekone.assignmenttwo;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
+
+import com.tiy.ssa.weekone.assignmenttwo.Battery;
+import com.tiy.ssa.weekone.assignmenttwo.PrecisionBattery;
 
 public class BatteryTests
 {
 
-	@Test
+	//@Test
 	public void sanity()
 	{
 		// discharge
@@ -21,7 +26,7 @@ public class BatteryTests
 		assertEquals("", 800, new Battery(1000F).charge(-200F), .1);
 	}
 
-	@Test
+	// @Test
 	public void sameBatteryChargeDischarge()
 	{
 		// charge and discharge same battery multiple times
@@ -33,7 +38,7 @@ public class BatteryTests
 		assertEquals("", 125.7, b1.discharge(-1000F), .1);
 	}
 
-	@Test
+	// @Test
 	public void howLongTest()
 	{
 		Battery b2 = new Battery(70);
@@ -41,5 +46,17 @@ public class BatteryTests
 		assertEquals("", 360, b2.howLong(10f), .1);
 		b2.discharge(40);
 		assertEquals("", 240, b2.howLong(5f), .1);
+	}
+
+	@Test
+	public void precisionBatteryTest()
+	{
+		PrecisionBattery b3 = new PrecisionBattery(new BigDecimal(70));
+
+		assertEquals("", new BigDecimal(60), b3.discharge(new BigDecimal(10)));
+		assertEquals("", 360, b3.howLong(new BigDecimal(10)), .1);
+		assertEquals("", new BigDecimal(20), b3.discharge(new BigDecimal(40)));
+		assertEquals("", 240, b3.howLong(new BigDecimal(5)), .1);
+		assertEquals("", new BigDecimal(20.5), b3.charge(new BigDecimal(.500)));
 	}
 }

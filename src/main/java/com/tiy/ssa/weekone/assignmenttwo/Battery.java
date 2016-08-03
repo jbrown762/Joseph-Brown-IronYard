@@ -1,4 +1,4 @@
-package com.tiy.ssa.weektwo.assignmenttwo;
+package com.tiy.ssa.weekone.assignmenttwo;
 
 public class Battery
 {
@@ -18,14 +18,11 @@ public class Battery
 	{
 		if (dischargeAmount < 0)
 			return charge(-dischargeAmount);
-		else
-		{
-			leftOver -= dischargeAmount;
-			if (leftOver < 0)
-				leftOver = 0;
-			getBatteryInfo();
-			return leftOver;
-		}
+
+		if ((leftOver -= dischargeAmount) < 0)
+			leftOver = 0;
+		printBatteryInfo();
+		return leftOver;
 	}
 
 	public float charge(float chargeAmount)
@@ -37,22 +34,25 @@ public class Battery
 			leftOver += chargeAmount;
 			if (leftOver > capacity)
 				leftOver = capacity;
-			getBatteryInfo();
+			printBatteryInfo();
 			return leftOver;
 		}
 	}
 
-	public float howLong(float power)
+	public int howLong(float power)
 	{
 		if (power == 0)
 			return 0;
-		else{
-			System.out.format("%.0f minutes remaining for a device with %.0f power using a battery with %.0f kw leftover\n", leftOver / (power) * 60, power, leftOver);
-			return (leftOver / (power)) * 60;
+		else
+		{
+			System.out.format(
+					"%.0f minutes remaining for a device with %.0f power using a battery with %.0f kw leftover\n",
+					leftOver / (power) * 60, power, leftOver);
+			return (int) (leftOver / (power)) * 60;
 		}
 	}
 
-	private void getBatteryInfo()
+	private void printBatteryInfo()
 	{
 		System.out.format("Battery capacity: %.1f, battery left over: %.1f\n", capacity, leftOver);
 	}
