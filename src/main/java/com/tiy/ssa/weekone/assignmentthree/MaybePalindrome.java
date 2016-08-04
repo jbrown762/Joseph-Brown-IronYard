@@ -11,10 +11,8 @@ public class MaybePalindrome
 
 	public boolean isPalindrome()
 	{
-		if(this.value == null){
-			System.out.println("Cannot use a null string!");
+		if(this.value.equals(""))
 			return false;
-		}
 		
 		char[] chars = value.toLowerCase().toCharArray();
 

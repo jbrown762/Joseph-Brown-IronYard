@@ -18,7 +18,6 @@ public class MaybePalindromeTests
 		assertTrue(new MaybePalindrome("aaaaaaaaaaaaaa").isPalindrome());
 		assertTrue(new MaybePalindrome("o").isPalindrome());
 		assertTrue(new MaybePalindrome("5 -bob- 5").isPalindrome());
-		assertTrue(new MaybePalindrome("").isPalindrome());
 		
 		System.out.println(new MaybePalindrome("5 -bob- 5").toString());
 	}
@@ -30,9 +29,8 @@ public class MaybePalindromeTests
 		assertFalse(new MaybePalindrome("aaao").isPalindrome());
 		assertFalse(new MaybePalindrome("Whatever").isPalindrome());
 		assertFalse(new MaybePalindrome("ethiopia").isPalindrome());
-		
-		assertFalse(new MaybePalindrome(null).isPalindrome());
-		
+		assertFalse(new MaybePalindrome("").isPalindrome());
+				
 		System.out.println(new MaybePalindrome("Whatever").toString());
 	}
 }

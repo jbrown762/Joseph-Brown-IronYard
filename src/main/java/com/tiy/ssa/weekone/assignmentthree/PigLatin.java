@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class PigLatin
 {
 	private String english;
-	private String word;
 	private String pigLatinSentence;
 	private Scanner in;
 
@@ -18,6 +17,8 @@ public class PigLatin
 
 	public String translate()
 	{
+		String word;
+
 		while (in.hasNext())
 		{
 			word = in.next();
