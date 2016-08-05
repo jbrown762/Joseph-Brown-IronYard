@@ -6,14 +6,14 @@ public class MaybePalindrome
 
 	public MaybePalindrome(String value)
 	{
-		this.value = value; //.toLowerCase();
+		this.value = value; // .toLowerCase();
 	}
 
 	public boolean isPalindrome()
 	{
-		if(this.value.equals(""))
+		if (this.value.equals(""))
 			return false;
-		
+
 		char[] chars = value.toLowerCase().toCharArray();
 
 		for (int i = 0; i < chars.length / 2; i++)

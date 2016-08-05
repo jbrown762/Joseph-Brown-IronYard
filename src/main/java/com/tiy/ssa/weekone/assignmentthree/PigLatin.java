@@ -14,7 +14,7 @@ public class PigLatin
 		in = new Scanner(english.toLowerCase());
 		pigLatinSentence = "";
 	}
-
+	
 	public String translate()
 	{
 		String word;
