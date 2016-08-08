@@ -9,39 +9,39 @@ import org.junit.Test;
 public class KnightTest
 {
 
-	ArrayList<Location> path = new ArrayList<>();
+    ArrayList<Location> path = new ArrayList<>();
 
-	@Test
-	public void test()
-	{
-		Knight k = new Knight(new Location(15, 10));
+    @Test
+    public void test()
+    {
+        Knight k = new Knight(new Location(15, 10));
 
-		while (true)
-		{
-			Location previousLocation = k.current;
-			
-			path.add(k.move());
-			
-			//check if move was legal
-			assertTrue(k.isLegal(previousLocation));
+        while (true)
+        {
+            Location previousLocation = k.current;
 
-			if (k.isHome())
-				break;
-		}
+            path.add(k.move());
 
-		assertEquals("", new Location(15, 10), path.get(path.size() - 1));
+            // check if move was legal
+            assertTrue(k.isLegal(previousLocation));
 
-		verify(k);
-	}
+            if (k.isHome())
+                break;
+        }
 
-	public void verify(Knight k)
-	{
-		// check if the Knight ever backtracked
-		for (int i = 0; i < path.size() / 2; i++)
-			assertFalse(path.get(i).equals(path.get(i + 2)));
-		
-		// check if total moves are no more than 4
-		System.out.println();
-		assertTrue(path.size() < 5);
-	}
+        assertEquals("", new Location(15, 10), path.get(path.size() - 1));
+
+        verify(k);
+    }
+
+    public void verify(Knight k)
+    {
+        // check if the Knight ever backtracked
+        for (int i = 0; i < path.size() / 2; i++)
+            assertFalse(path.get(i).equals(path.get(i + 2)));
+
+        // check if total moves are no more than 4
+        System.out.println();
+        assertTrue(path.size() < 5);
+    }
 }
