@@ -1,10 +1,16 @@
 package com.tiy.ssa.week2.assignment1;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lists
 {
+    private Lists()
+    {
+    }
+
     /**
      * @return a new List<T> containing only elements that are both in #one and #other (i.e. are "equal") - but just
      *         make sure that the returned List<T> is a logical set
@@ -15,8 +21,35 @@ public class Lists
         for (T t : one)
             for (T q : other)
                 if (t.equals(q))
+                {
                     temp.add(t);
+                    break;
+                }
         return temp;
+    }
+
+    public static <T> List<T> match2(List<T> one, List<T> other)
+    {
+        Set<T> newSet = new HashSet<>();
+
+        Set<T> oneSet = new HashSet<>();
+        oneSet.addAll(one);
+        Set<T> otherSet = new HashSet<>();
+        otherSet.addAll(other);
+
+        
+        for (T t : oneSet)
+            for (T q : otherSet)
+            {
+                if (t.equals(q) && !newSet.contains(t))
+                    newSet.add(t);
+                break;
+            }
+        
+        List<T> newList = new ArrayList<>();
+
+        newList.addAll(newSet);
+        return newList;
     }
 
     /**

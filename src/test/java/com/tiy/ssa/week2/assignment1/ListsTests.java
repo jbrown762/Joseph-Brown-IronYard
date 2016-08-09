@@ -7,8 +7,35 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.tiy.ssa.week2.assignment2.Goo;
+
 public class ListsTests
 {
+
+    @Test
+    public void ListsMatchTest2()
+    {
+        List<Object> one = new ArrayList<>();
+        one.add(new Goo("a"));
+        one.add(new Goo("fg"));
+        one.add(new Goo("b"));
+
+        List<Object> other = new ArrayList<>();
+        other.add(new Goo("a"));
+        other.add(new Goo("b"));
+
+        
+        List<Object> expected = new ArrayList<>();
+        expected.add(new Goo("a"));
+        expected.add(new Goo("b"));
+
+
+        List<Object> matchedList = Lists.match(one, other);
+
+        assertEquals(expected, matchedList);
+
+    }
+
     @Test
     public void ListsMatchTest()
     {
@@ -27,13 +54,12 @@ public class ListsTests
         other.add("f");
         other.add("");
         other.add(new Integer(5));
-
+        other.add("this");
 
         List<Object> expected = new ArrayList<>();
         expected.add(new Integer(5));
         expected.add("this");
         expected.add("that");
-
 
         List<Object> matchedList = Lists.match(one, other);
         assertEquals(expected, matchedList);
@@ -68,9 +94,8 @@ public class ListsTests
     {
         System.out.print(list.get(0));
         for (int i = 1; i < list.size(); i++)
-        {
             System.out.print(", " + list.get(i));
-        }
+
         System.out.println();
     }
 }
