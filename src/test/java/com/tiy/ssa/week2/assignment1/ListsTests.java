@@ -83,6 +83,8 @@ public class ListsTests
         expected.add("string");
         expected.add("string");
         expected.add("short");
+        expected.add("df");
+
 
         List<String> descendedList = Lists.descendingBySize(list);
         assertEquals(expected, descendedList);
