@@ -11,16 +11,15 @@ import com.tiy.ssa.week2.assignment3.SocialSecurityNumber;
 public class Registry
 {
 
-    Map<SocialSecurityNumber, Person> peopleMap = new HashMap<>();
-    Map<Person, Relationship> relationships = new HashMap<>();
-
+    final Map<SocialSecurityNumber, Person> peopleMap = new HashMap<>();
+    
     public boolean add(Person person)
     {
         if (peopleMap.containsValue(person))
             return false;
-
+        
         peopleMap.put(person.getSsn(), person);
-
+        
         return true;
     }
 
@@ -139,7 +138,7 @@ public class Registry
                 descendants.add(child);
                 descendants.add(youngestDescendant(child.getSsn()));
             }
-
+            
             descendants.sort((s1, s2) -> (s1.age() - s2.age()));
 
             return descendants.get(0);

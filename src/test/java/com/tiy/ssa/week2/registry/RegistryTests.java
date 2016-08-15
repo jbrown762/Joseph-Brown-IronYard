@@ -177,7 +177,7 @@ public class RegistryTests
 
         
         assertEquals(mother, registry.oldestLivingRelative(new SocialSecurityNumber("412345673")));
-
+        
 
     }
 
