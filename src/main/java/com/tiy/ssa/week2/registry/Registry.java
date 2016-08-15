@@ -11,8 +11,7 @@ import com.tiy.ssa.week2.assignment3.SocialSecurityNumber;
 public class Registry
 {
 
-    Map<SocialSecurityNumber, Person> peopleMap = new HashMap<>();
-    Map<Person, Relationship> relationships = new HashMap<>();
+    final Map<SocialSecurityNumber, Person> peopleMap = new HashMap<>();
 
     public boolean add(Person person)
     {
