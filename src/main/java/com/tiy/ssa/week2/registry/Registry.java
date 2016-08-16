@@ -12,11 +12,7 @@ public class Registry
 {
 
     final Map<SocialSecurityNumber, Person> peopleMap = new HashMap<>();
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 0570e2e2124169fa7843542b91d93516c3b8e3e0
     public boolean add(Person person)
     {
         if (peopleMap.containsValue(person))
