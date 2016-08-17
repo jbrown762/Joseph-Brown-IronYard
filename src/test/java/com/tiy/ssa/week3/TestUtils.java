@@ -23,6 +23,9 @@ public class TestUtils
 //        Collections.sort(expected);
 //        Collections.sort(actual);
 //        assertEquals("",  expected, actual);
+        String s = "s";
+        Object o = s;
+        s = (String)o;
     }
 
     @Test
