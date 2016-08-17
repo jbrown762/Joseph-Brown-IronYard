@@ -53,7 +53,7 @@ public class FileVerifier
     {
         String filePath = args[0];
         String alg = args[1];
-        for (int i = 0; i < args.length; i++)
+        for (int i = 0; i < args.length && args.length == 4; i++)
         {
             if(args[i].equals("-f"))
                 filePath = args[i+1];
