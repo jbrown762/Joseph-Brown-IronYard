@@ -51,21 +51,32 @@ public class FileVerifier
 
     public static void main(String[] args) throws NoSuchAlgorithmException
     {
-        try{
-        String filePath = args[0];
-        String alg = args[1];
-        for (int i = 0; i < args.length && args.length == 4; i++)
+        try
         {
-            if(args[i].equals("-f"))
-                filePath = args[i+1];
-            else if(args[i].equals("-alg"))
-                alg = args[i+1].toUpperCase();
-        }
+            String filePath = args[0];
+            String alg = args[1];
+            boolean lowerCase = false;
+            String output = "";
+            for (int i = 0; i < args.length && args.length > 3; i++)
+            {
+                if (args[i].equals("-f"))
+                    filePath = args[i + 1];
+                else if (args[i].equals("-alg"))
+                    alg = args[i + 1].toUpperCase();
+                else if (args[i].equals("-l"))
+                    lowerCase = true;
+            }
+
+            FileVerifier f = new FileVerifier(filePath, alg);
+            System.out.println((alg + " hash:").toUpperCase());
+            output = f.hash().toUpperCase();
+            if (lowerCase)
+                output = output.toLowerCase();
             
-        FileVerifier f = new FileVerifier(filePath, alg);
-        System.out.println((alg + " hash:").toUpperCase());
-        System.out.println(f.hash());
-        }catch(Exception e){
+            System.out.println(output);
+
+        } catch (Exception e)
+        {
             System.out.println("Invalid input!");
         }
     }
