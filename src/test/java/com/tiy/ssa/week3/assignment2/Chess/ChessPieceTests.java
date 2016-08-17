@@ -53,8 +53,14 @@ public class ChessPieceTests
 
 
         assertEquals(1, king.compareTo(queen));
-        assertEquals(-1, rook.compareTo(king));
+        assertEquals(1, queen.compareTo(rook));
+        
         assertEquals(0, bishop.compareTo(knight));
+        assertEquals(0, king.compareTo(king));
+        
+        assertEquals(-1, rook.compareTo(king));
         assertEquals(-1, pawn.compareTo(bishop));
+        assertEquals(-1, knight.compareTo(rook));
+
     }
 }

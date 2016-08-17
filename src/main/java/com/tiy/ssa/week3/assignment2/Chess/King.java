@@ -11,16 +11,20 @@ public class King extends PieceAbstract
     @Override
     public boolean canMove(Location where)
     {
-        if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
-            return false;
-        if ((Math.abs(where.getX() - this.where().getX()) == 1) && (where.getY() - this.where().getY() == 0))
-            return true;
-        if ((where.getX() - this.where().getX() == 0) && (Math.abs(where.getY() - this.where().getY()) == 1))
-            return true;
-        if ((Math.abs(where.getX() - this.where().getX()) == 1) && (Math.abs(where.getY() - this.where().getY()) == 1))
-            return true;
-        if(this.location.equals(where))
-            return true;
+        if (!isOutOfBounds(where))
+        {
+            double xDistance = Math.abs(where.getX() - this.where().getX());
+            double yDistance = Math.abs(where.getY() - this.where().getY());
+
+            if ((xDistance == 1) && (yDistance == 0))
+                return true;
+            if ((xDistance == 0) && (yDistance == 1))
+                return true;
+            if ((xDistance == 1) && (yDistance == 1))
+                return true;
+            if (this.location.equals(where))
+                return true;
+        }
         return false;
     }
 

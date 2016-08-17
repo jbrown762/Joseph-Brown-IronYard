@@ -11,13 +11,16 @@ public class Queen extends PieceAbstract
     @Override
     public boolean canMove(Location where)
     {
-        if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
-            return false;
-        if ((where.getX() - this.where().getX() == 0) || (where.getY() - this.where().getY() == 0))
-            return true;
-        if (Math.abs(where.getX() - this.where().getX()) == Math.abs(where.getY() - this.where().getY()))
-            return true;
-        
-        return true;
+        if (!isOutOfBounds(where))
+        {
+            double xDistance = Math.abs(where.getX() - this.where().getX());
+            double yDistance = Math.abs(where.getY() - this.where().getY());
+            
+            if ((xDistance == 0) || (yDistance == 0))
+                return true;
+            if (xDistance == yDistance)
+                return true;
+        }
+        return false;
     }
 }

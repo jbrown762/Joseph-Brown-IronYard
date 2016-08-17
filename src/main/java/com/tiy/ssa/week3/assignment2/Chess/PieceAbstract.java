@@ -5,7 +5,7 @@ public abstract class PieceAbstract implements Piece
     final Location location;
     final int value;
 
-    public PieceAbstract(Location location, int value)
+    protected PieceAbstract(Location location, int value)
     {
         this.location = location;
         this.value = value;
@@ -77,6 +77,13 @@ public abstract class PieceAbstract implements Piece
     public String toString()
     {
         return "(" + location.getX() + ", " + location.getY() + ")";
+    }
+    
+    public boolean isOutOfBounds(Location where)
+    {
+        if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
+            return true;
+        return false;
     }
 
 }

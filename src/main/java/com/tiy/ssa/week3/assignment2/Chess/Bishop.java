@@ -11,10 +11,9 @@ public class Bishop extends PieceAbstract
     @Override
     public boolean canMove(Location where)
     {
-        if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
-            return false;
-        if (Math.abs(where.getX() - this.where().getX()) == Math.abs(where.getY() - this.where().getY()))
-            return true;
+        if (!isOutOfBounds(where))
+            if (Math.abs(where.getX() - this.where().getX()) == Math.abs(where.getY() - this.where().getY()))
+                return true;
         return false;
     }
 }

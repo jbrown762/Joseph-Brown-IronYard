@@ -11,10 +11,10 @@ public class Rook extends PieceAbstract
     @Override
     public boolean canMove(Location where)
     {
-        if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
-            return false;
-        if ((where.getX() - this.where().getX() == 0) || (where.getY() - this.where().getY() == 0))
-            return true;
+        if (!isOutOfBounds(where))
+            if ((where.getX() - this.where().getX() == 0) || (where.getY() - this.where().getY() == 0))
+                return true;
+
         return false;
     }
 }
