@@ -1,6 +1,6 @@
 package com.tiy.ssa.week3.assignment2.Chess;
 
-public class Bishop extends PieceAbstract
+public class Bishop extends AbstractPiece
 {
 
     public Bishop(Location location)

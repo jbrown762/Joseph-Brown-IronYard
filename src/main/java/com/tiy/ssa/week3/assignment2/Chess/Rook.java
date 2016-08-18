@@ -1,6 +1,6 @@
 package com.tiy.ssa.week3.assignment2.Chess;
 
-public class Rook extends PieceAbstract
+public class Rook extends AbstractPiece
 {
 
     public Rook(Location location)

@@ -1,6 +1,6 @@
 package com.tiy.ssa.week3.assignment2.Chess;
 
-public class Queen extends PieceAbstract
+public class Queen extends AbstractPiece
 {
 
     public Queen(Location location)

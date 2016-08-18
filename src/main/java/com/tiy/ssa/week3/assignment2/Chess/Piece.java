@@ -39,5 +39,8 @@ public interface Piece extends Comparable<Piece>
     public int hashCode();
 
     int getValue();
+    
+    boolean isOutOfBounds(Location where);
+
 
 }

@@ -1,6 +1,6 @@
 package com.tiy.ssa.week3.assignment2.Chess;
 
-public class Pawn extends PieceAbstract
+public class Pawn extends AbstractPiece
 {
 
     public Pawn(Location location)
