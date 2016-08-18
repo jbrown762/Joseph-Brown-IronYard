@@ -83,6 +83,8 @@ public abstract class PieceAbstract implements Piece
     {
         if (where.getX() > 7 || where.getX() < 0 || where.getY() > 7 || where.getY() < 0)
             return true;
+        if(where().equals(where))
+            return true;
         return false;
     }
 

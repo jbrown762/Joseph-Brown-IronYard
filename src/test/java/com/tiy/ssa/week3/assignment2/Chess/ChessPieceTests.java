@@ -10,11 +10,11 @@ public class ChessPieceTests
     public void test()
     {
         Piece king = new King(new Location(1, 1));
-        assertTrue(king.canMove(new Location(1, 1)));
         assertTrue(king.canMove(new Location(1, 2)));
         assertFalse(king.canMove(new Location(3, 3)));
         assertFalse(king.canMove(new Location(-1, -1)));
         assertEquals(new Location(1, 1), king.where());
+        assertFalse(king.canMove(king.where()));
         System.out.println(king);
     
         Piece queen = new Queen(new Location(7, 1));
@@ -24,6 +24,7 @@ public class ChessPieceTests
         assertTrue(queen.canMove(new Location(7, 0)));
         assertFalse(queen.canMove(new Location(7, -1)));
         assertEquals(new Location(7, 1), queen.where());
+        assertFalse(queen.canMove(queen.where()));
         System.out.println(queen);
      
         Piece rook = new Rook(new Location(4, 4));
@@ -31,16 +32,20 @@ public class ChessPieceTests
         assertTrue(rook.canMove(new Location(4, 0)));
         assertFalse(rook.canMove(new Location(3, 3)));
         assertEquals(new Location(4, 4), rook.where());
+        assertFalse(rook.canMove(rook.where()));
+
         System.out.println(rook);
         
         Piece bishop = new Bishop(new Location(3, 3));
         assertTrue(bishop.canMove(new Location(1, 1)));
         assertTrue(bishop.canMove(new Location(5, 1)));
+        assertFalse(bishop.canMove(bishop.where()));
         System.out.println(bishop);
 
         Piece knight = new Knight(new Location(3, 3));
         assertTrue(knight.canMove(new Location(2, 5)));
         assertFalse(knight.canMove(new Location(3, 5)));
+        assertFalse(knight.canMove(knight.where()));
         System.out.println(knight);
 
 
@@ -49,6 +54,7 @@ public class ChessPieceTests
         assertTrue(pawn.canMove(new Location(5, 3)));
         assertFalse(pawn.canMove(new Location(5, 0)));
         assertFalse(pawn.canMove(new Location(1, 2)));
+        assertFalse(pawn.canMove(pawn.where()));
         System.out.println(pawn);
 
 
