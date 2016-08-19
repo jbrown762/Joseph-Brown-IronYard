@@ -1,38 +1,21 @@
 package com.tiy.ssa.week3.assignment4.Trie;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.Map.Entry;
+
 
 public class Trie implements Text9Trie
 {
-    final Map<Character, Letter> alphabet = new HashMap<>();
-
-    // final List<Letter> alphabet = new ArrayList<>();
-    // final Letter[] alphabet = new Letter[26];
-    // final File dictionary;
-    // final Scanner in;
-
-    public Trie() throws FileNotFoundException
-    {
-        // dictionary = new File("C:/Users/admin/workspace/SSA_12_Week/src/main/java/resources/corncob_lowercase.txt");
-        // dictionary = new File(filePath);
-        // in = new Scanner(dictionary);
-    }
+    final Map<Character, TrieNode> alphabet = new HashMap<>();
 
     @Override
     public void addWord(String word)
     {
         if (word.length() > 0)
         {
-            Letter firstChar = new Letter(word.charAt(0));
+            TrieNode firstChar = new TrieNode(word.charAt(0));
 
             if (alphabet.get(word.charAt(0)) == null)
                 alphabet.put(word.charAt(0), firstChar);
@@ -50,7 +33,6 @@ public class Trie implements Text9Trie
             wordCheck += alphabet.get(word.charAt(0)).letter
                     + alphabet.get(word.charAt(0)).getWordCheckString(word.substring(1));
 
-       // System.out.println(wordCheck);
         if (wordCheck.endsWith("|") && word.equals(wordCheck.substring(0, wordCheck.length() - 1)))
             return true;
         return false;
@@ -63,17 +45,8 @@ public class Trie implements Text9Trie
         {
             alphabet.get(word.charAt(0)).remove(word.substring(1));
 
-            
-            // if (alphabet.get(word.charAt(0)).nextLettersSize() > 1)
-            // alphabet.get(word.charAt(0)).remove(word.substring(1, word.length()));
-            // else
-            // alphabet.remove(alphabet.get(word.indexOf(0)));
-
             if (!contains(word))
                 return true;
-
-            // if (alphabet.size() == 1)
-            // alphabet.remove(alphabet.get(word.indexOf(0)));
 
         }
         return false;
@@ -89,7 +62,8 @@ public class Trie implements Text9Trie
     public List<String> suggest(String digits) // 234
     {
         // 2-> abc 3 -> def 4 -> ghi 5 -> jkl 6 -> mno 7 -> pqrs 8 -> tuv 9 -> wxyz
-        String[] digitArray = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+        String[] digitArray =
+        { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
         ArrayList<String> list = new ArrayList<>();
 
         if (digits.length() > 0)
@@ -100,7 +74,10 @@ public class Trie implements Text9Trie
             for (int i = 0; i < digitLetters.length(); i++)
             {
                 char nextChar = digitLetters.charAt(i);
-                list.addAll(alphabet.get(nextChar).suggest(digits.substring(1), "" + nextChar));
+                String words = "" +nextChar;
+                if(digits.length() == 1)
+                    words = "";
+                list.addAll(alphabet.get(nextChar).suggest(digits.substring(1), words));
             }
         }
 

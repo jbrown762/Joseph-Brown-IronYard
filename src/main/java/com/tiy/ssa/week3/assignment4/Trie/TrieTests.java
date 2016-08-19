@@ -31,7 +31,8 @@ public class TrieTests
         assertTrue(t.contains("key"));
         assertTrue(t.remove("apple"));
 
-        t.suggest("252");
+        t.suggest("286");
+        //t.suggest("3");
 
         t.clear();
         assertFalse(t.contains("can"));

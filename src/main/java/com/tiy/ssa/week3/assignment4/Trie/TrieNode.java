@@ -2,19 +2,17 @@ package com.tiy.ssa.week3.assignment4.Trie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
-public class Letter
+public class TrieNode
 {
     char letter;
-    final Map<Character, Letter> alphabet = new HashMap<>();
+    final Map<Character, TrieNode> alphabet = new HashMap<>();
     boolean endOfWord = false;
 
-    public Letter(char letter)
+    public TrieNode(char letter)
     {
         this.letter = letter;
     }
@@ -28,9 +26,7 @@ public class Letter
     {
         if (word.length() > 0)
         {
-            // System.out.println(word);
-
-            Letter firstChar = new Letter(word.charAt(0));
+            TrieNode firstChar = new TrieNode(word.charAt(0));
 
             if (alphabet.get(word.charAt(0)) == null)
                 alphabet.put(word.charAt(0), firstChar);
@@ -56,31 +52,11 @@ public class Letter
 
     public void remove(String word)
     {
-        // System.out.println(word);
         if (word.length() == 0)
-        {
             endOfWord = false;
-           // System.out.println(letter);
-        } else{
-            System.out.println(word);
+        else
             alphabet.get(word.charAt(0)).remove(word.substring(1));
-        }
-        // if (word.length() > 2)
-        // {
-        // alphabet.get(word.charAt(0)).remove(word.substring(1, word.length()));
-        // }
-        //
-        // if (alphabet.get(word.charAt(0)).nextLettersSize() == 0)
-        // alphabet.remove(alphabet.get(word.substring(1, word.length())));
 
-        // if(alphabet.get(word.charAt(0)).nextLettersSize() < 1)
-        // alphabet.remove(alphabet.get(word.substring(1,word.length())));
-
-        // if (alphabet.get(word.indexOf(0)).nextLettersSize() > 1)
-        // alphabet.get(word.indexOf(0)).remove(word.substring(1, word.length()));
-        // else
-        // endOfWord = false;
-        // alphabet.remove(alphabet.get(word.indexOf(0)));
     }
 
     public int nextLettersSize()
@@ -88,11 +64,11 @@ public class Letter
         return alphabet.size();
     }
 
-    public ArrayList<String> suggest(String digits, String word)
+    public List<String> suggest(String digits, String word)
     {
         String[] digitArray =
         { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         String currentWord = word;
         word += letter;
 
@@ -119,9 +95,8 @@ public class Letter
                 System.out.println(word);
                 list.add(word);
             }
-            for (Entry<Character, Letter> e : alphabet.entrySet())
+            for (Entry<Character, TrieNode> e : alphabet.entrySet())
                 list.addAll(e.getValue().suggest("", word));
-            
 
         }
 
