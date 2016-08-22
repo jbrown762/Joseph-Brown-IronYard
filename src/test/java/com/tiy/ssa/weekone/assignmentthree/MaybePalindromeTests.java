@@ -2,15 +2,17 @@ package com.tiy.ssa.weekone.assignmentthree;
 
 import static org.junit.Assert.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.tiy.ssa.weekone.assignmentthree.MaybePalindrome;
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MaybePalindromeTests
 {
+    static final Logger LOGGER = LogManager.getLogger(MaybePalindromeTests.class);
+
 	@Test
 	public void aTrueTest()
 	{
@@ -19,7 +21,7 @@ public class MaybePalindromeTests
 		assertTrue(new MaybePalindrome("o").isPalindrome());
 		assertTrue(new MaybePalindrome("5 -bob- 5").isPalindrome());
 		
-		System.out.println(new MaybePalindrome("5 -bob- 5").toString());
+		 LOGGER.debug(new MaybePalindrome("5 -bob- 5").toString());
 	}
 
 	@Test
@@ -31,6 +33,6 @@ public class MaybePalindromeTests
 		assertFalse(new MaybePalindrome("ethiopia").isPalindrome());
 		assertFalse(new MaybePalindrome("").isPalindrome());
 				
-		System.out.println(new MaybePalindrome("Whatever").toString());
+		 LOGGER.debug(new MaybePalindrome("Whatever").toString());
 	}
 }

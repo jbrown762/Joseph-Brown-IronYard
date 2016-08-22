@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -15,15 +17,16 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HarambeTests
 {
+    static final Logger LOGGER = LogManager.getLogger(HarambeTests.class);
 
     List<Harambe> harambes = new ArrayList<>();
-    
+
     @Test
     public void test1()
     {
         for (Harambe harambe : getBigGorillas())
         {
-            System.out.print(harambe.toString() + " ");
+            LOGGER.debug(harambe.toString() + " ");
             assertTrue(harambe.getWeight() > 500);
         }
     }
@@ -33,7 +36,7 @@ public class HarambeTests
     {
         for (Harambe harambe : getSmallGorillas())
         {
-            System.out.print(harambe.toString() + " ");
+            LOGGER.debug(harambe.toString() + " ");
             assertTrue(!(harambe.getWeight() > 500));
         }
     }
@@ -44,7 +47,7 @@ public class HarambeTests
         removeBigGorillas();
         for (Harambe harambe : harambes)
         {
-            System.out.print(harambe.toString() + " ");
+            LOGGER.debug(harambe.toString() + " ");
             assertTrue(!(harambe.getWeight() > 500));
         }
     }
@@ -55,7 +58,7 @@ public class HarambeTests
         keepBigGorillas();
         for (Harambe harambe : harambes)
         {
-            System.out.print(harambe.toString() + " ");
+            LOGGER.debug(harambe.toString() + " ");
             assertTrue(!(harambe.getWeight() < 500));
         }
     }
@@ -73,7 +76,7 @@ public class HarambeTests
     public void clear()
     {
         this.harambes.clear();
-        System.out.println();
+        // System.out.println();
     }
 
     // inclusive; return new list that meets criteria

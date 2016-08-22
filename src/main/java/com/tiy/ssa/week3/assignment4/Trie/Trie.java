@@ -9,6 +9,9 @@ import java.util.Map;
 public class Trie implements Text9Trie
 {
     final Map<Character, TrieNode> alphabet = new HashMap<>();
+    static {
+        
+    }
 
     @Override
     public void addWord(String word)

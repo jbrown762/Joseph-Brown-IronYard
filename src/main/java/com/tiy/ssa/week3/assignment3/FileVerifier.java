@@ -7,8 +7,14 @@ import java.io.FileInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tiy.ssa.weekone.assignmentone.Power;
+
 public class FileVerifier
 {
+    static final Logger LOGGER = LogManager.getLogger(Power.class);
 
     File file;
     MessageDigest sha1;
@@ -68,16 +74,16 @@ public class FileVerifier
             }
 
             FileVerifier f = new FileVerifier(filePath, alg);
-            System.out.println((alg + " hash:").toUpperCase());
+            LOGGER.debug((alg + " hash:").toUpperCase());
             output = f.hash().toUpperCase();
             if (lowerCase)
                 output = output.toLowerCase();
             
-            System.out.println(output);
+            LOGGER.debug(output);
 
         } catch (Exception e)
         {
-            System.out.println("Invalid input!");
+            LOGGER.debug("Invalid input!");
         }
     }
 

@@ -5,11 +5,15 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
 public class WordCountTests
 {
+    static final Logger LOGGER = LogManager.getLogger(WordCountTests.class);
+
     static String SOURCE = "Alexander Augustus Norman Dudley Jerry Pentland, MC, DFC, AFC (5 August 1894 – 3 November 1983) was an Australian fighter ace in World War I. Born in Maitland, New South Wales, he commenced service as a Lighthorseman with the Australian Imperial Force in 1915, and saw action at Gallipoli. He transferred to the Royal Flying Corps the following year, rising to captain. Credited with twenty-three aerial victories, Pentland became the fifth highest-scoring Australian ace of the war, after Robert Little, Stan Dallas, Harry Cobby and Roy King. He was awarded the Military Cross in January 1918 for conspicuous gallantry and devotion to duty on a mission attacking an aerodrome behind enemy lines, and the Distinguished Flying Cross that August for engaging four hostile aircraft single-handedly.";
     WordCount wordCount = new WordCount();
 
@@ -40,7 +44,7 @@ public class WordCountTests
         list.add("australian");
 
         parse();
-        System.out.println("TOP WORDS: " + print(wordCount.top(4)) + "\n");// + wordCount.getWordCount() + "\n");
+        LOGGER.debug("TOP WORDS: " + print(wordCount.top(4)) + "\n");// + wordCount.getWordCount() + "\n");
         assertEquals(list, wordCount.top(4));
     }
 
@@ -54,7 +58,7 @@ public class WordCountTests
         list.add("dudley");
 
         parse();
-        System.out.println("BOTTOM WORDS: " + print(wordCount.bottom(4)) + "\n");// + wordCount.getWordCount() + "\n");
+        LOGGER.debug("BOTTOM WORDS: " + print(wordCount.bottom(4)) + "\n");// + wordCount.getWordCount() + "\n");
         assertEquals(list, wordCount.bottom(4));
     }
 

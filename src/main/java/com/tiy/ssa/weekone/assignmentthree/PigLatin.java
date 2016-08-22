@@ -2,8 +2,15 @@ package com.tiy.ssa.weekone.assignmentthree;
 
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tiy.ssa.weekone.assignmentone.Power;
+
 public class PigLatin
 {
+    static final Logger LOGGER = LogManager.getLogger(Power.class);
+
     private String english;
     private Scanner in;
 
@@ -51,6 +58,6 @@ public class PigLatin
 
     private void printString(String pigLatinSentence)
     {
-        System.out.println(english + " ---> " + pigLatinSentence);
+        LOGGER.debug(english + " ---> " + pigLatinSentence);
     }
 }

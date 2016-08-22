@@ -1,7 +1,11 @@
 package com.tiy.ssa.weekone.assignmenttwo;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Battery
 {
+    static final Logger LOGGER = LogManager.getLogger(Battery.class);
 
 	final float capacity;
 	float leftOver; // cannot be > than capacity && cannot be < 0
@@ -45,8 +49,8 @@ public class Battery
 			return 0;
 		else
 		{
-			System.out.format(
-					"%.0f minutes remaining for a device with %.0f power using a battery with %.0f kw leftover\n",
+            LOGGER.debug(
+					"{} minutes remaining for a device with {} power using a battery with {} kw leftover\n",
 					leftOver / (power) * 60, power, leftOver);
 			return (int) (leftOver / (power)) * 60;
 		}
@@ -54,6 +58,6 @@ public class Battery
 
 	private void printBatteryInfo()
 	{
-		System.out.format("Battery capacity: %.1f, battery left over: %.1f\n", capacity, leftOver);
+	    LOGGER.debug("Battery capacity: {}, battery left over: {}\n", capacity, leftOver);
 	}
 }

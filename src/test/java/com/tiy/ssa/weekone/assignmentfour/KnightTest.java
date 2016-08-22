@@ -41,7 +41,7 @@ public class KnightTest
             assertFalse(path.get(i).equals(path.get(i + 2)));
 
         // check if total moves are no more than 4
-        System.out.println();
+        //System.out.println();
         assertTrue(path.size() < 5);
     }
 }

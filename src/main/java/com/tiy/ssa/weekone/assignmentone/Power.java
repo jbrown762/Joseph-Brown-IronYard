@@ -1,7 +1,12 @@
 package com.tiy.ssa.weekone.assignmentone;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Power
 {
+    static final Logger LOGGER = LogManager.getLogger(Power.class);
+
 	int num;
 
 	public Power(int num)
@@ -11,19 +16,19 @@ public class Power
 
 	public int powerOfOne()
 	{
-		System.out.format("%d to the power of one = %d\n", num, num);
+	    LOGGER.debug("{} to the power of one = {}\n", num, num);
 		return num;
 	}
 
 	public int squared()
 	{
-		System.out.format("%d squared = %d\n", num, num * num);
+	    LOGGER.debug("{} squared = {}\n", num, num * num);
 		return num * num;
 	}
 
 	public int cubed()
 	{
-		System.out.format("%d cubed = %d\n", num, num * num * num);
+	    LOGGER.debug("{} cubed = {}\n", num, num * num * num);
 		return num * num * num;
 	}
 }

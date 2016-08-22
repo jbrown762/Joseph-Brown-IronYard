@@ -6,12 +6,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.tiy.ssa.week2.assignment2.User;
 
 public class MapTests
 {
+    static final Logger LOGGER = LogManager.getLogger(MapTests.class);
+
     @Test
     public void initial()
     {
@@ -29,8 +33,8 @@ public class MapTests
     @Test
     public void stringshash()
     {
-        System.err.println("horse".hashCode());
-        System.err.println("hoarse".hashCode());
+        LOGGER.debug("horse".hashCode());
+        LOGGER.debug("hoarse".hashCode());
 
     }
 

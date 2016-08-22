@@ -7,10 +7,16 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+
+import com.tiy.ssa.weekone.assignmentone.Power;
 
 public class ShakespearReader
 {
+    static final Logger LOGGER = LogManager.getLogger(ShakespearReader.class);
+
     WordCount counter = new WordCount();
 
     @Test
@@ -39,14 +45,14 @@ public class ShakespearReader
 
         } catch (IOException iex)
         {
-            System.err.println(iex);
+            LOGGER.debug(iex);
         } finally
         {
             if (null != reader)
                 reader.close();
         }
-        System.out.println(counter.top(15));
-        System.out.println(counter.bottom(15));
+        LOGGER.debug(counter.top(15));
+        LOGGER.debug(counter.bottom(15));
         assertTrue(this.counter.count("the") > 2);
     }
 

@@ -2,8 +2,15 @@ package com.tiy.ssa.weekone.assignmentfour;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tiy.ssa.weekone.assignmentone.Power;
+
 public class Knight
 {
+    static final Logger LOGGER = LogManager.getLogger(Power.class);
+
     final Location home;
     Location current;
     private ArrayList<Location> path = new ArrayList<>();
@@ -35,7 +42,7 @@ public class Knight
             return true;
         else if (xDistance == 2 && yDistance == 1)
             return true;
-        System.out.format("INVALID MOVE! (X moved %d, Y moved %d)\n", xDistance, yDistance);
+        LOGGER.debug("INVALID MOVE! (X moved {}, Y moved {})\n", xDistance, yDistance);
         return false;
     }
 
@@ -99,7 +106,7 @@ public class Knight
                 path.add(new Location(current.getX(), current.getY()));
             }
         }
-        System.out.format("Move #%d: ", path.size());
+        LOGGER.debug("Move #{}: ", path.size());
         getLocation();
         return current;
     }
@@ -128,7 +135,7 @@ public class Knight
 
     private Location getLocation()
     {
-        System.out.format("(%d, %d)\n", current.getX(), current.getY());
+        LOGGER.debug("({}, {})\n", current.getX(), current.getY());
         return current;
     }
 }

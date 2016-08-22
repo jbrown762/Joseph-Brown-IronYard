@@ -2,19 +2,22 @@ package com.tiy.ssa.weekone.assignmentthree;
 
 import static org.junit.Assert.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.tiy.ssa.weekone.assignmentthree.PigLatin;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PigLatinTests
 {
+    static final Logger LOGGER = LogManager.getLogger(PigLatinTests.class);
+
     @Test
     public void aVowel()
     {
-        System.out.println("ENGLISH ---> PIG LATIN\n");
+        LOGGER.debug("ENGLISH ---> PIG LATIN\n");
         assertEquals("airway", new PigLatin("air").translate());
         assertEquals("uway", new PigLatin("u").translate());
         assertEquals("oopsway", new PigLatin("oops").translate());

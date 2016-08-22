@@ -1,12 +1,15 @@
-package com.tiy.ssa.week3.assignment4.Trie;
+package com.tiy.ssa.week3.assignment4;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import org.junit.Test;
+
+import com.tiy.ssa.week3.assignment4.Trie.Trie;
 
 public class TrieTests
 {

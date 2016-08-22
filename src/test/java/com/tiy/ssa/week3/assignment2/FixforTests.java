@@ -6,12 +6,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
+
 
 public class FixforTests
 {
+    static final Logger LOGGER = LogManager.getLogger(FixforTests.class);
 
     @Test
     public void test()
@@ -21,7 +24,7 @@ public class FixforTests
 
         for (String s : new Fixfor<>(it))
         {
-            System.out.println(s);
+            LOGGER.debug(s);
         }
 
     }

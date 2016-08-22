@@ -6,11 +6,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tiy.ssa.weekone.assignmentone.Power;
+
 public class UserTests
 {
+    static final Logger LOGGER = LogManager.getLogger(UserTests.class);
+
     List<User> users = new ArrayList<>();
 
     @Before
@@ -34,7 +40,7 @@ public class UserTests
         usersExpected.add(new Name("Baby", "Jesus"));
 
         for (Name n : children(users))
-            System.out.println(n.getFirst() + " " + n.getLast());
+            LOGGER.debug(n.getFirst() + " " + n.getLast());
 
         assertEquals(usersExpected, children(users));
     }

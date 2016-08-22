@@ -5,12 +5,16 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import com.tiy.ssa.week2.assignment2.Goo;
+import com.tiy.ssa.weekone.assignmentone.Power;
 
 public class ListsTests
 {
+    static final Logger LOGGER = LogManager.getLogger(ListsTests.class);
 
     @Test
     public void ListsMatchTest2()
@@ -94,10 +98,10 @@ public class ListsTests
 
     private <T> void printList(List<T> list)
     {
-        System.out.print(list.get(0));
+        LOGGER.debug(list.get(0));
         for (int i = 1; i < list.size(); i++)
-            System.out.print(", " + list.get(i));
+            LOGGER.debug(", " + list.get(i));
 
-        System.out.println();
+        //System.out.println();
     }
 }

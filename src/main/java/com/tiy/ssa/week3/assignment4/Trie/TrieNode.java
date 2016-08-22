@@ -6,8 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.tiy.ssa.weekone.assignmentone.Power;
+
 public class TrieNode
 {
+    static final Logger LOGGER = LogManager.getLogger(Power.class);
+
     char letter;
     final Map<Character, TrieNode> alphabet = new HashMap<>();
     boolean endOfWord = false;
@@ -92,7 +99,7 @@ public class TrieNode
         {
             if (endOfWord)
             {
-                System.out.println(word);
+                LOGGER.debug(word);
                 list.add(word);
             }
             for (Entry<Character, TrieNode> e : alphabet.entrySet())
