@@ -41,7 +41,7 @@ public class Board
             for (int i = 0; i < startState.length(); i++)
             {
                 boardArray[i] = Character.digit(startState.charAt(i), 10);
-                System.err.println(boardArray[i]);
+                // System.err.println(boardArray[i]);
             }
         }
 
@@ -63,10 +63,23 @@ public class Board
             for (int j = 0; j < 3; j++)
                 squares[i][j] = new Square(i, j);
 
-        for (int col = 0; col < 9; col += 3)
-            for (int i = 0; i < boardArray.length; i = +9)
-                for (int j = i; j < 3; j++)
-                    squares[i / 27][i / 3].setCell(boardArray[j] / 9, boardArray[j] % 9, boardArray[j], true);
+        for (int i = 0; i < boardArray.length; i++)
+        {
+            // System.out.println(i / 9 + " " + i % 9 + " " + boardArray[i]);
+            squares[i / 27][i % 9 / 3].setCell(i / 9, i % 9, boardArray[i], true);
+        }
+
+        //
+        // for (int col = 0; col < 9; col += 3){
+        // System.out.println(col);
+        // for (int i = col; i < boardArray.length; i += 9)
+        // for (int j = i; j < i + 3; j++)
+        // {
+        // System.out.println(i / 27 + " " + (j % 3) + " = " + boardArray[j] + " " +j % 9);
+        //
+        // squares[j / 9][j/3].setCell(j / 9, j % 9, boardArray[j], true);
+        // }
+        solutionSquaresToString();
     }
 
     public boolean checkRows()
@@ -86,38 +99,46 @@ public class Board
         return true;
     }
 
-    public Set<Integer> getRowValues(int row)
+    public List<Integer> getRowValues(int row)
     {
 
-        HashSet<Integer> rowSet = new HashSet<Integer>();
+        List<Integer> rows = new ArrayList<Integer>();
         for (int j = 0; j < 3; j++)
             for (int k = 0; k < 3; k++)
             {
-                if (squares[row][j].getCellValue(row, k) != 0)
-                    rowSet.add(squares[row][j].getCellValue(row, k));
+//                for (int i = 0; i < 3; i++)
+//                {
+//                    for (int h = 0; h < 3; h++)
+//                    {
+                        System.out.println(j + " " + k);// + " "+ i + " " + h);
+                       // rows.add(squares[j][k].getCellValue(i, h));
+//                    }
+//                }
+                // if (squares[row /3][j].getCellValue(row / 3, k) != 0)
+
             }
-        return rowSet;
+        return rows;
     }
 
-    public boolean checkColumns()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            HashSet<Integer> column = new HashSet<Integer>();
-
-            for (int j = 0; j < 3; j++)
-            {
-                for (int k = 0; k < 3; k++)
-                {
-                    if (column.contains(squares[j][i].getCellValue(k, i)))
-                        return false;
-                    if (squares[j][i].getCellValue(k, i) != 0)
-                        column.add(squares[j][i].getCellValue(k, i));
-                }
-            }
-        }
-        return true;
-    }
+//    public boolean checkColumns()
+//    {
+//        for (int i = 0; i < 3; i++)
+//        {
+//            HashSet<Integer> column = new HashSet<Integer>();
+//
+//            for (int j = 0; j < 3; j++)
+//            {
+//                for (int k = 0; k < 3; k++)
+//                {
+//                    if (column.contains(squares[j][i].getCellValue(k, i)))
+//                        return false;
+//                    if (squares[j][i].getCellValue(k, i) != 0)
+//                        column.add(squares[j][i].getCellValue(k, i));
+//                }
+//            }
+//        }
+//        return true;
+//    }
 
     public Set<Integer> getColValues(int col)
     {
@@ -125,50 +146,55 @@ public class Board
 
         for (int j = 0; j < 3; j++)
             for (int k = 0; k < 3; k++)
-                if (squares[j][col].getCellValue(k, col) != 0)
-                    column.add(squares[j][col].getCellValue(k, col));
-
+            {
+                if (squares[j][col / 3].getCellValue(k, col / 3) != 0)
+                    column.add(squares[j][col / 3].getCellValue(k, col / 3));
+            }
         return column;
     }
 
     public void solve()
     {
-        
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
             {
-                HashSet<Integer> restrictedValues = new HashSet<Integer>();
-                restrictedValues.addAll(getRowValues(i));
-                restrictedValues.addAll(getColValues(j));
-                restrictedValues.addAll(solutionSquares[i / 3][j / 3].getSquareValues());
-
-                for (int value = 1; value < 10; value++)
+                if (!solutionSquares[i / 3][j / 3].getCell(i, j).isFixed)
                 {
-                    if(!restrictedValues.contains(value)){
-                        solutionSquares[i / 3][j / 3].setCell(i, j, value, false);
-                        break;
+                    HashSet<Integer> restrictedValues = new HashSet<Integer>();
+                    restrictedValues.addAll(getRowValues(i));
+                    restrictedValues.addAll(getColValues(j));
+                    restrictedValues.addAll(solutionSquares[i / 3][j / 3].getSquareValues());
+
+                    for (int value = 1; value < 10; value++)
+                    {
+                        if (!restrictedValues.contains(value))
+                        {
+
+                            solutionSquares[i / 3][j / 3].setCell(i, j, value, false);
+                            break;
+                        }
                     }
                 }
-                
+
             }
         }
-        
+
         solutionSquaresToString();
     }
-    
+
     private void solutionSquaresToString()
     {
         for (int i = 0; i < 9; i++)
         {
-            int j = 0;
-            for (int value : getRowValues(i))
+            for (int value = 0; value < getRowValues(i).size(); value++)
             {
-                solution[i*9 + j] = value;
-                j++;
+
+                solution[i * value] = getRowValues(i).get(value);
+                value++;
             }
         }
-        
+
     }
 
     public static void main(String[] args) throws IOException
@@ -176,10 +202,15 @@ public class Board
         Board b = new Board();
         b.parseFile(new File("C:/Users/admin/Downloads/easy-11.txt")); // input from user
         b.initializeBoard();
-        b.solutionSquares = Arrays.copyOf(b.squares, b.squares.length);
-        b.solve();
         
-        System.out.println(b.solution);
+        b.solutionSquares = Arrays.copyOf(b.squares, b.squares.length);
+
+        System.out.println(Arrays.toString(b.solution));
+
+        // b.solve();
+
+        System.out.println(Arrays.toString(b.boardArray));
+        // System.out.println(Arrays.toString(b.solution));
 
     }
 }

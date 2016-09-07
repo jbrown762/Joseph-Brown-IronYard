@@ -1,12 +1,12 @@
 package org.ssa.ironyard.sudoku;
 
-public class Cell
+public class Cell2
 {
 
     boolean isFixed;
     int row, column, value;
     
-    public Cell(int row, int column)
+    public Cell2(int row, int column)
     {
         this.row = row;
         this.column = column;
@@ -14,7 +14,7 @@ public class Cell
         this.value = 0;
     }
     
-    public Cell(int row, int column, int value, boolean isFixed)
+    public Cell2(int row, int column, int value, boolean isFixed)
     {
         this.isFixed = isFixed;
         this.row = row;

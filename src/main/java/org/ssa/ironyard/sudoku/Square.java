@@ -33,10 +33,21 @@ public class Square
     {
         return cells[row][column].getValue();
     }
+    
+    public Cell getCell(int row, int column)
+    {
+        return cells[row/3][column/3];
+    }
 
     public void setCell(int row, int column, int value, boolean isFixed)
     {
-        cells[row][column].setCell(row, column, value, isFixed);
+        try{
+            //System.out.println(row%3 + " " + column%3);
+        cells[row%3][column%3].setCell(row, column, value, isFixed);
+        }catch(Exception e)
+        {
+            System.out.println(row + " " + column + "|||||||||||||||||||||||||||||||||");
+        }
     }
 
     public boolean validateSquare()
