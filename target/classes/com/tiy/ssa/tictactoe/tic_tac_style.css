@@ -1,0 +1,98 @@
+.square {
+	width: 125px;
+	height: 125px;
+	text-align: center;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 3em;
+}
+
+.v {
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+}
+
+.h {
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+#winner {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 2em;
+}
+
+#header {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 3em
+}
+
+#btnRestart{
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2em;
+}
+
+/*
+ function checkRows(){
+		  var id = -1;
+		  for(let j = 1; j < 10; j+=3){
+				var val1 = $('#' + j).text();
+				var val2 = $('#' + (j+1)).text();
+				var val3 = $('#' + (j+2)).text();
+
+				if(val1 != "" && val1 == val2 && val1 == val3){
+					winner = val1;
+					return;
+				}
+				if(val1 != "" && val1 === val2 && val3 === "")
+					id = j+2;
+				if(val1 != "" && val1 === val3 && val2 === "")
+					if(val1 == "O")
+						id = j+1;
+				if(val2 != "" && val2 === val3 && val1 === "")
+					if(val2 == "O")
+						id = j;
+			}
+		  return id;
+	  }
+	  
+	  function checkCols(){
+		  var id = -1;
+		  for(let j = 1; j < 4; j++){
+				var val1 = $('#' + j).text();
+				var val2 = $('#' + (j+3)).text();
+				var val3 = $('#' + (j+6)).text();
+				var value = "";
+
+				if(val1 != "" && val1 == val2 && val1 == val3){
+					winner = val1;
+					return;
+				}
+				
+				if(val1 != "" && val1 === val2 && val3 === ""){
+					id = j+6;
+					value = val1;
+				}
+				if(val1 != "" && val1 === val3 && val2 === "")
+					if(value == "X"){
+						id = j+3;
+						value = val1;
+					}
+				
+				if(val2 != "" && val2 === val3 && val1 === "")
+					if(value == "X"){
+						id = j;
+						value = val2;
+					}
+				if(value === "O")
+					return id;
+		  }
+				return id;
+	  }
+	  
+	  */

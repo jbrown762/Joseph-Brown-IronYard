@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Edit Animal</title>
+<style type="text/css">
+header {
+	text-align: center;
+	font-size: 3em;
+	background-color: #ff69b4;
+	border: 16px dotted #32cd32;
+}
+
+footer {
+	text-align: center;
+	font-size: 2.5em;
+}
+
+body {
+	background-color: pink
+}
+
+.editImage {
+	display: block;
+	align: right;
+	border: 4px solid #864222;
+	float: right;
+	margin: 0 0 5px 0 0;
+}
+
+#name {
+	text-align: center;
+}
+
+.menuItem {
+	margin: 0 1em;
+	list-style: none;
+	font-size: .4em;
+}
+
+#header {
+	display: inline-flex
+}
+
+#footer {
+	display: inline-flex
+}
+
+#header a {
+	text-decoration: overline underline blink;
+}
+
+#footer a {
+	text-decoration: none;
+}
+
+/* unvisited link */
+#header a:link {
+	color: yellow;
+}
+
+/* visited link */
+menu a:visited {
+	color: pink;
+}
+
+/* mouse over link */
+menu a:hover {
+	color: lime;
+}
+
+#animalsList a:hover {
+	color: lime;
+	background-color: white
+}
+
+#animalsList td {
+	font-size: large;
+	color: lime;
+	background-color: white;
+	color: lime;
+	padding: 15px
+}
+
+#animalsList table {
+	text-align: center;
+}
+
+#animalsList tr:nth-child(odd) td {
+	background-color: white;
+}
+
+#animalsList tr:nth-child(even) td {
+	background-color: lime;
+}
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+menu a:active {
+	color: black;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		**/* SSA ZOO**//*/ <br>
+		<menu id="header">
+			<li class="menuItem" title="Back"><a href="chimpanzee.html">&lt;&lt;</a></li>
+			<li class="menuItem" title="Home"><a href="home.html">Home</a></li>
+			<li class="menuItem" title="Register"><a href="register.html">Register</a></li>
+			<li class="menuItem" title="Logout"><a href="logout.html">Logout</a></li>
+			<li class="menuItem" title="Edit"><a href="edit.html">Edit</a></li>
+			<li class="menuItem" title="Add"><a href="add.html">Add</a></li>
+			<li class="menuItem" title="Next"><a href="elephant.html">&gt;&gt;</a></li>
+		</menu>
+	</header>
+
+	<section id="name">
+		<h2>EDIT ANIMAL</h2>
+	</section>
+
+	<form action="">
+
+		<fieldset class="editImage">
+			<legend id="imageUploadLegend"> Upload Image for aardvark </legend>
+			<input type="file" name="uploadField" />
+
+
+		</fieldset>
+
+		<fieldset>
+			<legend>Select Animal</legend>
+			<p>
+				<label>Animals: </label> <select id="aList"
+					onchange="updateAnimalName()">
+					<option value="aardvark">aardvark</option>
+					<option value="baboon">baboon</option>
+					<option value="chimpanzee">chimpanzee</option>
+					<option value="donkey">donkey</option>
+					<option value="elephant">elephant</option>
+					<option value="fish">fish</option>
+					<option value="gorilla">gorilla</option>
+					<option value="horse">horse</option>
+					<option value="iguana">iguana</option>
+					<option value="jackalope">jackalope</option>
+					<option value="kangaroo">kangaroo</option>
+					<option value="loris">loris</option>
+					<option value="manatee">manatee</option>
+					<option value="nightingale">nightingale</option>
+				</select>
+			</p>
+		</fieldset>
+
+		<br> <br>
+
+		<fieldset>
+			<legend>Continents</legend>
+
+			<br> <input type="checkbox" name="continent" value="Africa">AFRICA
+			<br> <input type="checkbox" name="continent"
+				value="NorthAmerica">BEST AMERICA <br> <input
+				type="checkbox" name="continent" value="SouthAmerica">SOUTH
+			AMERICA <br> <input type="checkbox" name="continent"
+				value="Asia">ASIA <br> <input type="checkbox"
+				name="continent" value="Australia">AUSTRALIA<br> <input
+				type="checkbox" name="continent" value="Europe">EUROPE <br>
+			<input type="checkbox" name="continent" value="Antarctica">ANTARCTICA
+		</fieldset>
+		<br> <br>
+		<fieldset>
+			<legend>Interesting Fact</legend>
+			<textarea name="factTextArea" cols="45" rows="5"
+				placeholder="What is interesting bout dis animal?"></textarea>
+			<br />
+
+		</fieldset>
+
+		<br> <input type="submit" value="Submit">
+
+	</form>
+
+	<footer>
+		<menu id="footer">
+			<li class="menuItem" title="Back"><a href="chimpanzee.html">&lt;&lt;</a></li>
+			<li class="menuItem" title="Home"><a href="home.html">Home</a></li>
+			<li class="menuItem" title="Register"><a href="register.html">Register</a></li>
+			<li class="menuItem" title="Logout"><a href="logout.html">Logout</a></li>
+			<li class="menuItem" title="Edit"><a href="edit.html">Edit</a></li>
+			<li class="menuItem" title="Add"><a href="add.html">Add</a></li>
+			<li class="menuItem" title="Next"><a href="elephant.html">&gt;&gt;</a></li>
+		</menu>
+	</footer>
+
+
+	<script>
+		function updateAnimalName() {
+			document.getElementById("imageUploadLegend").innerHTML = "Upload Image for "
+					+ document.getElementById("aList").value;
+			
+		//	document.getElementById("name").innerHTML = "EDIT "
+		//		+ document.getElementById("aList").value;
+		}
+		function updateTitle() {
+			
+		}
+	</script>
+</body>
+</html>
