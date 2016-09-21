@@ -4,7 +4,7 @@
 
 </head>
 <body>
-<p id="header">TIC TAC TOE</p>
+	<p id="header">TIC TAC TOE</p>
 	<div id="board">
 		<table>
 			<tr id="row1">
@@ -119,25 +119,25 @@ function Board(){
 				}
 		  }
 		  
-		  else{
-			  
-			  if(moves() === 2){
+			else if(moves() === 2){
 				var forkId = checkFork();
 			 	clickSquare(forkId);
-			  }else{
-				for(let i = 1; i <9; i+=2)
-					if(squares[i].getValue() == ""){
-						clickSquare(i+1);
-					  	break;
-					  }
+			}
+		  
+		  else{
+			for(let i = 1; i <9; i+=2)
+				if(squares[i].getValue() == ""){
+					clickSquare(i+1);
+				  	break;
+				  }
 			  }
 		  }
 		  
-	  }
+	  
 	  
 	  function checkFork(){
 			for(let i = forkPos(); i <10; i++){
-				if(squares[i-1].getValue() == "")			
+				if(squares[i-1].getValue() === "" && [1, 3, 7, 9].includes(i))			
 					return i;
 			}
 			return -1;
@@ -178,36 +178,7 @@ function Board(){
 			}
 		  return -1;
 	  }
-	  
-	  /*
-	  function checkCols(){
-		  var id;
-		  for(let j = 1; j < 4; j++){
-				var val1 = $('#' + j).text();
-				var val2 = $('#' + (j+3)).text();
-				var val3 = $('#' + (j+6)).text();
-
-				if(val1 != "" && val1 == val2 && val1 == val3){
-					winner = val1;
-					return;
-				}
-				
-				if(val1 != "" && val1 === val2 && val3 === "")
-					id = j+6;
-				if(val1 != "" && val1 === val3 && val2 === ""){
-					if(val1 === "X")
-						id = j+3;
-				}
-				if(val2 != "" && val2 === val3 && val1 === ""){
-					if(val2 === "X")
-						id = j;
-				}
-				return id;
-			}
-		  return -1;
-	  }
-	  */
-	  
+	
 	  function checkDiags(){
 		  for(let j = 4; j > 1; j-=2){
 				var val1 = $('#' + (5-j)).text();
@@ -236,7 +207,7 @@ function Board(){
 	  function moves(){
 		  var playerMoves = 0;
 		  for(let j = 1; j < 10; j++)
-				if($('#' + j).text() == "X")
+				if($('#' + j).text() === "X")
 					playerMoves++;
 		  return playerMoves;
 	  }
@@ -244,7 +215,7 @@ function Board(){
 	  function forkPos(){
 		  var idCount = 0;
 		  for(let j = 1; j < 10; j++)
-				if($('#' + j).text() == "X")
+				if($('#' + j).text() === "X")
 					idCount += j;
 		  
 		  if(idCount < 9)
